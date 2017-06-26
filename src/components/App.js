@@ -12,7 +12,8 @@ const App = ({ children }) => (
   <div className="ui one column stackable center aligned page grid" style={appStyle}>
     <div className="column twelve wide">
       <header>
-        <h1>RevoEnglish {version}</h1>
+        <Link to="/"><h1>RevoEnglish {version}</h1></Link>
+        <br />
         <Link to="/login"><Button color="purple">Admin Login</Button></Link>
         &nbsp;
         <Link to="/register"><Button color="purple">Registration form</Button></Link>
