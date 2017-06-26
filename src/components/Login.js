@@ -7,7 +7,6 @@ const inputStyle = {
 
 const Login = () => (
   <div>
-    <br />
     <Form>
       <Form.Field>
         <input placeholder="Username" style={inputStyle} />

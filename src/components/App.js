@@ -29,6 +29,7 @@ const App = ({ children }) => (
           <Link to="/assignments"><Button color="purple">Assignments</Button></Link>}
       </header>
       <section>
+        <br />
         {children}
       </section>
       <br />
