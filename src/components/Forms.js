@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon, Menu, Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import Form from './Form';
 
 const nameStyle = {

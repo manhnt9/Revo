@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon, Form, Grid, Checkbox, Table } from 'semantic-ui-react';
+import { Form, Grid, Checkbox, Table } from 'semantic-ui-react';
 
 class Fee extends React.Component {
   constructor(props) {
