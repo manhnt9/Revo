@@ -20,6 +20,8 @@ const App = ({ children }) => (
       <section>
         {children}
       </section>
+      <br />
+      <p>&copy; 2017 RevoTeam </p>
     </div>
   </div>
 );
