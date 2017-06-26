@@ -2,16 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router';
 import App from './components/App';
-import PoweredBy from './components/Powered-by';
-import About from './components/About';
+import RegForm from './components/RegForm';
+import Login from './components/Login';
 
 window.React = React;
 
 render(
   (<Router history={hashHistory}>
     <Route path="/" component={App}>
-      <Route path="/about" component={About} />
-      <Route path="/poweredby" component={PoweredBy} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={RegForm} />
     </Route>
   </Router>), document.getElementById('content')
 );
