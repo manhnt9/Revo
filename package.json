@@ -1,19 +1,16 @@
 {
-  "name": "react-starterify",
-  "version": "2.4.1",
-  "description": "React JS application skeleton using Browserify and other awesome tools",
+  "name": "RevoEnglish",
+  "version": "1.0.0",
+  "description": "Managing your English classes",
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Granze/react-starterify"
+    "url": "https://github.com/zer0-x/RevoEnglish"
   },
   "keywords": [
     "gulp",
     "react",
     "browserify",
-    "seed",
-    "boilerplate",
-    "kickstarter",
     "ES6",
     "ES2015",
     "babel",
@@ -32,12 +29,6 @@
     "deploy": "gulp deploy",
     "test": "ava --tap | tap-nyan"
   },
-  "author": "Maurizio Mangione",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Granze/react-starterify/issues"
-  },
-  "homepage": "https://github.com/Granze/react-starterify",
   "dependencies": {
     "history": "^3.0.0",
     "react": "^15.0.1",
@@ -86,3 +77,4 @@
     "watchify": "^3.7.0"
   }
 }
+
