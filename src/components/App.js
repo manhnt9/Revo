@@ -13,9 +13,9 @@ const App = ({ children }) => (
     <div className="column twelve wide">
       <header>
         <h1>RevoEnglish {version}</h1>
-        <Link to="/login"><Button>Admin Login</Button></Link>
+        <Link to="/login"><Button color="purple">Admin Login</Button></Link>
         &nbsp;
-        <Link to="/register"><Button>Registration form</Button></Link>
+        <Link to="/register"><Button color="purple">Registration form</Button></Link>
       </header>
       <section>
         {children}
