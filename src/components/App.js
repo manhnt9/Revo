@@ -18,7 +18,7 @@ const App = ({ children }) => (
         <br />
         <Link to="/login"><Button color="purple">Admin Login</Button></Link>
         &nbsp;
-        <Link to="/register"><Button color="purple">Registration form</Button></Link>
+        <Link to="/register"><Button color="purple">Register</Button></Link>
         {localStorage.loggedIn &&
           <Link to="/forms"><Button color="purple">Forms</Button></Link>}
         {localStorage.loggedIn &&
