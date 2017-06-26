@@ -18,3 +18,4 @@ const App = ({ children }) => (
 App.propTypes = { children: React.PropTypes.object };
 
 export default App;
+
