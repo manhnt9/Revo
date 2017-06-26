@@ -8,6 +8,8 @@ const appStyle = {
   top: 150
 };
 
+localStorage.loggedIn = true;
+
 const App = ({ children }) => (
   <div className="ui one column stackable center aligned page grid" style={appStyle}>
     <div className="column twelve wide">
@@ -17,6 +19,14 @@ const App = ({ children }) => (
         <Link to="/login"><Button color="purple">Admin Login</Button></Link>
         &nbsp;
         <Link to="/register"><Button color="purple">Registration form</Button></Link>
+        {localStorage.loggedIn &&
+          <Link to="/forms"><Button color="purple">Forms</Button></Link>}
+        {localStorage.loggedIn &&
+          <Link to="/fee"><Button color="purple">Fee</Button></Link>}
+        {localStorage.loggedIn &&
+          <Link to="/attendance"><Button color="purple">Attendance</Button></Link>}
+        {localStorage.loggedIn &&
+          <Link to="/assignments"><Button color="purple">Assignments</Button></Link>}
       </header>
       <section>
         {children}
