@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react';
 
 const appStyle = {
   position: 'relative',
-  top: 100
+  top: 150
 };
 
 const App = ({ children }) => (
