@@ -1,11 +1,14 @@
 import React from 'react';
 import { Dropdown, Checkbox, Table } from 'semantic-ui-react';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
 class Attendance extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      date: moment(),
       classes: [
         'E1', 'E2'
       ],
@@ -38,6 +41,10 @@ class Attendance extends React.Component {
     this.setState({ classOptions: options });
   }
 
+  handleDateChange(d) {
+    this.setState({ date: d });
+  }
+
   handlePresenceChange(id) {
     const newStudents = this.state.students;
     for (let i = 0; i < newStudents.length; i++) {
@@ -68,6 +75,11 @@ class Attendance extends React.Component {
     return (
       <div>
         <Dropdown defaultValue="invalid" options={this.state.classOptions} />
+        &nbsp;
+        <DatePicker
+          selected={this.state.date}
+          onChange={(d) => { this.handleDateChange(d); }}
+        />
 
         <Table celled>
           <Table.Header>

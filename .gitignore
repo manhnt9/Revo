@@ -5,3 +5,4 @@ node_modules
 dist/index.html
 dist/js/app.js.map
 dist/styles/main.css.map
+yarn-error.log
