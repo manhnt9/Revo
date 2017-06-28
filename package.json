@@ -1,11 +1,11 @@
 {
-  "name": "RevoEnglish",
+  "name": "Revo",
   "version": "1.0.0",
   "description": "Managing your English classes",
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zer0-x/RevoEnglish"
+    "url": "https://github.com/zer0-x/Revo"
   },
   "keywords": [
     "gulp",
