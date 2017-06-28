@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Forms from './components/Forms';
 import Fee from './components/Fee';
 import Attendance from './components/Attendance';
+import Assignments from './components/Assignments';
 
 window.React = React;
 
@@ -18,6 +19,7 @@ render(
       <Route path="/forms" component={Forms} />
       <Route path="/fee" component={Fee} />
       <Route path="/attendance" component={Attendance} />
+      <Route path="/assignments" component={Assignments} />
     </Route>
   </Router>), document.getElementById('content')
 );
