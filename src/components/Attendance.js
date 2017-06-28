@@ -86,7 +86,7 @@ class Attendance extends React.Component {
     return (
       <div>
         <Dropdown
-          defaultValue="invalid"
+          defaultValue={this.state.class}
           options={this.state.classOptions}
           onChange={(event, data) => { this.handleClassChange(data.value); }}
         />
