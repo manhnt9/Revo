@@ -9,6 +9,7 @@ class Attendance extends React.Component {
 
     this.state = {
       date: moment(),
+      class: 'invalid',
       classes: [
         'E1', 'E2'
       ],
@@ -41,8 +42,12 @@ class Attendance extends React.Component {
     this.setState({ classOptions: options });
   }
 
+  fetchData() {
+    console.log(this.state.date.format('MM/DD/YYYY'));
+  }
+
   handleDateChange(d) {
-    this.setState({ date: d });
+    this.setState({ date: d }, () => { this.fetchData(); });
   }
 
   handlePresenceChange(id) {
@@ -55,26 +60,36 @@ class Attendance extends React.Component {
     this.setState({ students: newStudents });
   }
 
+  handleClassChange(value) {
+    this.setState({ class: value }, () => { this.fetchData(); });
+  }
+
   render() {
     const students = [];
-    for (let i = 0; i < this.state.students.length; i++) {
-      students.push(
-        <Table.Row>
-          <Table.Cell>{i + 1}</Table.Cell>
-          <Table.Cell>{this.state.students[i].name}</Table.Cell>
-          <Table.Cell>
-            <Checkbox
-              onClick={() => { this.handlePresenceChange(this.state.students[i].id); }}
-              checked={this.state.students[i].presence}
-            />
-          </Table.Cell>
-        </Table.Row>
-      );
+    if (this.state.class !== 'invalid') {
+      for (let i = 0; i < this.state.students.length; i++) {
+        students.push(
+          <Table.Row>
+            <Table.Cell>{i + 1}</Table.Cell>
+            <Table.Cell>{this.state.students[i].name}</Table.Cell>
+            <Table.Cell>
+              <Checkbox
+                onClick={() => { this.handlePresenceChange(this.state.students[i].id); }}
+                checked={this.state.students[i].presence}
+              />
+            </Table.Cell>
+          </Table.Row>
+        );
+      }
     }
 
     return (
       <div>
-        <Dropdown defaultValue="invalid" options={this.state.classOptions} />
+        <Dropdown
+          defaultValue="invalid"
+          options={this.state.classOptions}
+          onChange={(event, data) => { this.handleClassChange(data.value); }}
+        />
         &nbsp;
         <DatePicker
           selected={this.state.date}
