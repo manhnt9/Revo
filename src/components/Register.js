@@ -3,7 +3,6 @@ import { Button, Form } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
-
 const inputStyle = {
   width: 250
 };
@@ -20,11 +19,10 @@ class Register extends React.Component {
 
   handleChange(e, { name, value }) {
     this.setState({ [name]: value });
-    console.log(this.state);
   }
 
   handleSubmit() {
-    console.log(this.state);
+
   }
 
   render() {
