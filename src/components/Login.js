@@ -10,8 +10,16 @@ class Login extends React.Component {
     super(props);
 
     this.state = {
-
+      username: '', password: ''
     };
+  }
+
+  handleChange(e, { name, value }) {
+    this.setState({ [name]: value });
+  }
+
+  handleSubmit() {
+
   }
 
   render() {
@@ -19,10 +27,16 @@ class Login extends React.Component {
       <div>
         <Form>
           <Form.Field>
-            <input placeholder="Username" style={inputStyle} />
+            <Form.Input
+              style={inputStyle} name="username" placeholder="Username"
+              onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
+            />
           </Form.Field>
           <Form.Field>
-            <input type="password" placeholder="Password" style={inputStyle} />
+            <Form.Input
+              style={inputStyle} name="password" placeholder="Password" type="password"
+              onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
+            />
           </Form.Field>
           <Form.Field>
             <Checkbox label="Remember me" />
