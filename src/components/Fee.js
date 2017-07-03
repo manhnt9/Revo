@@ -12,13 +12,13 @@ class Fee extends React.Component {
           id: 1,
           name: 'Nguyen Van A',
           class: 'E1',
-          hasPayed: true
+          hasPaid: true
         },
         {
           id: 2,
           name: 'Nguyen Van B',
           class: 'E1',
-          hasPayed: false
+          hasPaid: false
         }
       ]
     };
@@ -32,7 +32,7 @@ class Fee extends React.Component {
     const newStudents = this.state.students;
     for (let i = 0; i < newStudents.length; i++) {
       if (newStudents[i].id === id) {
-        newStudents[i].hasPayed = !newStudents[i].hasPayed;
+        newStudents[i].hasPaid = !newStudents[i].hasPaid;
       }
     }
     this.setState({ students: newStudents });
@@ -50,7 +50,7 @@ class Fee extends React.Component {
             <Table.Cell>
               <Checkbox
                 onClick={() => { this.handlePaymentChange(this.state.students[i].id); }}
-                checked={this.state.students[i].hasPayed}
+                checked={this.state.students[i].hasPaid}
               />
             </Table.Cell>
           </Table.Row>
@@ -58,7 +58,7 @@ class Fee extends React.Component {
       }
     } else if (this.state.currentFilter === 1) {
       for (let i = 0; i < this.state.students.length; i++) {
-        if (this.state.students[i].hasPayed === true) continue;
+        if (this.state.students[i].hasPaid === true) continue;
         students.push(
           <Table.Row>
             <Table.Cell>{i + 1}</Table.Cell>
@@ -67,7 +67,7 @@ class Fee extends React.Component {
             <Table.Cell>
               <Checkbox
                 onClick={() => { this.handlePaymentChange(this.state.students[i].id); }}
-                checked={this.state.students[i].hasPayed}
+                checked={this.state.students[i].hasPaid}
               />
             </Table.Cell>
           </Table.Row>
@@ -75,7 +75,7 @@ class Fee extends React.Component {
       }
     } else if (this.state.currentFilter === 2) {
       for (let i = 0; i < this.state.students.length; i++) {
-        if (this.state.students[i].hasPayed === false) continue;
+        if (this.state.students[i].hasPaid === false) continue;
         students.push(
           <Table.Row>
             <Table.Cell>{i + 1}</Table.Cell>
@@ -84,7 +84,7 @@ class Fee extends React.Component {
             <Table.Cell>
               <Checkbox
                 onClick={() => { this.handlePaymentChange(this.state.students[i].id); }}
-                checked={this.state.students[i].hasPayed}
+                checked={this.state.students[i].hasPaid}
               />
             </Table.Cell>
           </Table.Row>
@@ -106,13 +106,13 @@ class Fee extends React.Component {
                     />
                   </Grid.Column>
                   <Grid.Column width={5}>
-                    <Form.Field label="Hasn't payed" control="input" type="radio" name="htmlRadios"
+                    <Form.Field label="Hasn't paid" control="input" type="radio" name="htmlRadios"
                       onClick={() => { this.setFilter(1); }}
                       checked={this.state.currentFilter === 1}
                     />
                   </Grid.Column>
                   <Grid.Column width={5}>
-                    <Form.Field label="Has payed" control="input" type="radio" name="htmlRadios"
+                    <Form.Field label="Has paid" control="input" type="radio" name="htmlRadios"
                       onClick={() => { this.setFilter(2); }}
                       checked={this.state.currentFilter === 2}
                     />

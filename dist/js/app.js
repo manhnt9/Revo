@@ -70129,12 +70129,12 @@ var Fee = function (_React$Component) {
         id: 1,
         name: 'Nguyen Van A',
         class: 'E1',
-        hasPayed: true
+        hasPaid: true
       }, {
         id: 2,
         name: 'Nguyen Van B',
         class: 'E1',
-        hasPayed: false
+        hasPaid: false
       }]
     };
     return _this;
@@ -70151,7 +70151,7 @@ var Fee = function (_React$Component) {
       var newStudents = this.state.students;
       for (var i = 0; i < newStudents.length; i++) {
         if (newStudents[i].id === id) {
-          newStudents[i].hasPayed = !newStudents[i].hasPayed;
+          newStudents[i].hasPaid = !newStudents[i].hasPaid;
         }
       }
       this.setState({ students: newStudents });
@@ -70189,7 +70189,7 @@ var Fee = function (_React$Component) {
                 onClick: function onClick() {
                   _this2.handlePaymentChange(_this2.state.students[i].id);
                 },
-                checked: _this2.state.students[i].hasPayed
+                checked: _this2.state.students[i].hasPaid
               })
             )
           ));
@@ -70200,7 +70200,7 @@ var Fee = function (_React$Component) {
         }
       } else if (this.state.currentFilter === 1) {
         var _loop2 = function _loop2(i) {
-          if (_this2.state.students[i].hasPayed === true) return 'continue';
+          if (_this2.state.students[i].hasPaid === true) return 'continue';
           students.push(_react2.default.createElement(
             _semanticUiReact.Table.Row,
             null,
@@ -70226,7 +70226,7 @@ var Fee = function (_React$Component) {
                 onClick: function onClick() {
                   _this2.handlePaymentChange(_this2.state.students[i].id);
                 },
-                checked: _this2.state.students[i].hasPayed
+                checked: _this2.state.students[i].hasPaid
               })
             )
           ));
@@ -70239,7 +70239,7 @@ var Fee = function (_React$Component) {
         }
       } else if (this.state.currentFilter === 2) {
         var _loop3 = function _loop3(i) {
-          if (_this2.state.students[i].hasPayed === false) return 'continue';
+          if (_this2.state.students[i].hasPaid === false) return 'continue';
           students.push(_react2.default.createElement(
             _semanticUiReact.Table.Row,
             null,
@@ -70265,7 +70265,7 @@ var Fee = function (_React$Component) {
                 onClick: function onClick() {
                   _this2.handlePaymentChange(_this2.state.students[i].id);
                 },
-                checked: _this2.state.students[i].hasPayed
+                checked: _this2.state.students[i].hasPaid
               })
             )
           ));
@@ -70309,7 +70309,7 @@ var Fee = function (_React$Component) {
                   _react2.default.createElement(
                     _semanticUiReact.Grid.Column,
                     { width: 5 },
-                    _react2.default.createElement(_semanticUiReact.Form.Field, { label: 'Hasn\'t payed', control: 'input', type: 'radio', name: 'htmlRadios',
+                    _react2.default.createElement(_semanticUiReact.Form.Field, { label: 'Hasn\'t paid', control: 'input', type: 'radio', name: 'htmlRadios',
                       onClick: function onClick() {
                         _this2.setFilter(1);
                       },
@@ -70319,7 +70319,7 @@ var Fee = function (_React$Component) {
                   _react2.default.createElement(
                     _semanticUiReact.Grid.Column,
                     { width: 5 },
-                    _react2.default.createElement(_semanticUiReact.Form.Field, { label: 'Has payed', control: 'input', type: 'radio', name: 'htmlRadios',
+                    _react2.default.createElement(_semanticUiReact.Form.Field, { label: 'Has paid', control: 'input', type: 'radio', name: 'htmlRadios',
                       onClick: function onClick() {
                         _this2.setFilter(2);
                       },
