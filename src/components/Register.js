@@ -13,7 +13,7 @@ class Register extends React.Component {
 
     this.state = {
       date: moment(),
-      name: '', phone: '', email: '', socialID: '', course: '', note: ''
+      name: '', parent_name: '', phone: '', email: '', social_id: '', course: '', note: ''
     };
   }
 
@@ -44,6 +44,13 @@ class Register extends React.Component {
             />
           </Form.Field>
           <Form.Field>
+            <label>Parent name</label>
+            <Form.Input
+              style={inputStyle} name="parent_name"
+              onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
+            />
+          </Form.Field>
+          <Form.Field>
             <label>Phone number</label>
             <Form.Input
               style={inputStyle} name="phone"
@@ -60,7 +67,7 @@ class Register extends React.Component {
           <Form.Field>
             <label>Facebook link or Skype ID</label>
             <Form.Input
-              style={inputStyle} name="socialID"
+              style={inputStyle} name="social_id"
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
             />
           </Form.Field>
