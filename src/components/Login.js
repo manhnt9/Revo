@@ -26,7 +26,7 @@ class Login extends React.Component {
     };
 
     const options = {
-      url: 'http://localhost:3002/api/sessions',
+      url: 'http://localhost:3002/api/session',
       method: 'POST',
       json: true,
       body: formData
