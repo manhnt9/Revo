@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
+import request from 'request';
 
 const inputStyle = {
   width: 200
@@ -19,13 +20,29 @@ class Login extends React.Component {
   }
 
   handleSubmit() {
+    const options = {
+      url: 'http://localhost:3002/api/v1/login',
+      auth: {
+        user: this.state.username,
+        password: this.state.password
+      }
+    };
 
+    request(options, (err, res, body) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log('headers', res.headers);
+      console.log('status code', res.statusCode);
+      console.log(body);
+    });
   }
 
   render() {
     return (
       <div>
-        <Form>
+        <Form onSubmit={() => { this.handleSubmit(); }}>
           <Form.Field>
             <Form.Input
               style={inputStyle} name="username" placeholder="Username"
