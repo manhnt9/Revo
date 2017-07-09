@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown, Checkbox, Table } from 'semantic-ui-react';
+import { Dropdown, Table } from 'semantic-ui-react';
 
 class Assignments extends React.Component {
   constructor(props) {
