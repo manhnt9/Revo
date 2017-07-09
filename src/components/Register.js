@@ -30,13 +30,6 @@ class Register extends React.Component {
       <div>
         <Form onSubmit={() => { this.handleSubmit(); }}>
           <Form.Field>
-            <label>Date of birth</label>
-            <DatePicker
-              selected={this.state.date}
-              onChange={() => { }}
-            />
-          </Form.Field>
-          <Form.Field>
             <label>Name</label>
             <Form.Input
               style={inputStyle} name="name"
@@ -48,6 +41,13 @@ class Register extends React.Component {
             <Form.Input
               style={inputStyle} name="parent_name"
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Date of birth</label>
+            <DatePicker
+              selected={this.state.date}
+              onChange={(d) => { this.setState({ date: d }); }}
             />
           </Form.Field>
           <Form.Field>
@@ -72,7 +72,7 @@ class Register extends React.Component {
             />
           </Form.Field>
           <Form.Field>
-            <label>Course name</label>
+            <label>Course</label>
             <Form.Input
               style={inputStyle} name="course"
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
