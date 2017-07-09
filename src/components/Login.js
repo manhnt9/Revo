@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
 import request from 'request';
+import { API_URL } from '../Api.js';
 
 const inputStyle = {
   width: 200
@@ -26,7 +27,7 @@ class Login extends React.Component {
     };
 
     const options = {
-      url: 'http://localhost:3002/api/session',
+      url: `${API_URL} + /session`,
       method: 'POST',
       json: true,
       body: formData
@@ -37,8 +38,8 @@ class Login extends React.Component {
         console.log(err);
         return;
       }
-      console.log('headers', res.headers);
-      console.log('status code', res.statusCode);
+      // console.log('headers', res.headers);
+      // console.log('status code', res.statusCode);
       console.log(body);
     });
   }
