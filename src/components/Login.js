@@ -20,12 +20,16 @@ class Login extends React.Component {
   }
 
   handleSubmit() {
+    const formData = {
+      email: this.state.username,
+      password: this.state.password
+    };
+
     const options = {
-      url: 'http://localhost:3002/api/v1/login',
-      auth: {
-        user: this.state.username,
-        password: this.state.password
-      }
+      url: 'http://localhost:3002/api/sessions',
+      method: 'POST',
+      json: true,
+      body: formData
     };
 
     request(options, (err, res, body) => {
