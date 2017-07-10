@@ -6,17 +6,17 @@ class Assignments extends React.Component {
     super(props);
 
     this.state = {
-      class: 'invalid',
-      classes: [
+      course: 'invalid',
+      courses: [
         'E1', 'E2'
       ],
-      classOptions: [
+      courseOptions: [
       ],
       students: [
         {
           id: 1,
           name: 'Nguyen Van A',
-          class: 'E1',
+          course: 'E1',
           grade1: 9.2,
           grade2: 8.0,
           grade3: 8.8
@@ -24,7 +24,7 @@ class Assignments extends React.Component {
         {
           id: 2,
           name: 'Nguyen Van B',
-          class: 'E1',
+          course: 'E1',
           grade1: 9.0,
           grade2: 7.0,
           grade3: 7.6
@@ -35,12 +35,12 @@ class Assignments extends React.Component {
 
   componentWillMount() {
     const options = [];
-    options.push({ key: 'invalid', text: 'Select class', value: 'invalid' });
-    for (let i = 0; i < this.state.classes.length; i++) {
-      const className = this.state.classes[i];
-      options.push({ key: className, text: className, value: className });
+    options.push({ key: 'invalid', text: 'Select course', value: 'invalid' });
+    for (let i = 0; i < this.state.courses.length; i++) {
+      const courseName = this.state.courses[i];
+      options.push({ key: courseName, text: courseName, value: courseName });
     }
-    this.setState({ classOptions: options });
+    this.setState({ courseOptions: options });
   }
 
   fetchData() {
@@ -51,13 +51,13 @@ class Assignments extends React.Component {
     this.setState({ date: d }, () => { this.fetchData(); });
   }
 
-  handleClassChange(value) {
-    this.setState({ class: value }, () => { this.fetchData(); });
+  handlecourseChange(value) {
+    this.setState({ course: value }, () => { this.fetchData(); });
   }
 
   render() {
     const students = [];
-    if (this.state.class !== 'invalid') {
+    if (this.state.course !== 'invalid') {
       for (let i = 0; i < this.state.students.length; i++) {
         students.push(
           <Table.Row>
@@ -74,9 +74,9 @@ class Assignments extends React.Component {
     return (
       <div>
         <Dropdown
-          defaultValue={this.state.class}
-          options={this.state.classOptions}
-          onChange={(event, data) => { this.handleClassChange(data.value); }}
+          defaultValue={this.state.course}
+          options={this.state.courseOptions}
+          onChange={(event, data) => { this.handlecourseChange(data.value); }}
         />
 
         <Table celled>

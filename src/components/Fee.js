@@ -11,13 +11,13 @@ class Fee extends React.Component {
         {
           id: 1,
           name: 'Nguyen Van A',
-          class: 'E1',
+          course: 'E1',
           hasPaid: true
         },
         {
           id: 2,
           name: 'Nguyen Van B',
-          class: 'E1',
+          course: 'E1',
           hasPaid: false
         }
       ]
@@ -46,7 +46,7 @@ class Fee extends React.Component {
           <Table.Row>
             <Table.Cell>{i + 1}</Table.Cell>
             <Table.Cell>{this.state.students[i].name}</Table.Cell>
-            <Table.Cell>{this.state.students[i].class}</Table.Cell>
+            <Table.Cell>{this.state.students[i].course}</Table.Cell>
             <Table.Cell>
               <Checkbox
                 onClick={() => { this.handlePaymentChange(this.state.students[i].id); }}
@@ -63,7 +63,7 @@ class Fee extends React.Component {
           <Table.Row>
             <Table.Cell>{i + 1}</Table.Cell>
             <Table.Cell>{this.state.students[i].name}</Table.Cell>
-            <Table.Cell>{this.state.students[i].class}</Table.Cell>
+            <Table.Cell>{this.state.students[i].course}</Table.Cell>
             <Table.Cell>
               <Checkbox
                 onClick={() => { this.handlePaymentChange(this.state.students[i].id); }}
@@ -80,7 +80,7 @@ class Fee extends React.Component {
           <Table.Row>
             <Table.Cell>{i + 1}</Table.Cell>
             <Table.Cell>{this.state.students[i].name}</Table.Cell>
-            <Table.Cell>{this.state.students[i].class}</Table.Cell>
+            <Table.Cell>{this.state.students[i].course}</Table.Cell>
             <Table.Cell>
               <Checkbox
                 onClick={() => { this.handlePaymentChange(this.state.students[i].id); }}
@@ -94,8 +94,8 @@ class Fee extends React.Component {
 
     return (
       <div>
-        <div className="ui one column stackable center aligned page grid">
-          <div className="column">
+        <div courseName="ui one column stackable center aligned page grid">
+          <div courseName="column">
             <Form.Group grouped>
               <Grid>
                 <Grid.Row>
@@ -127,7 +127,7 @@ class Fee extends React.Component {
             <Table.Row>
               <Table.HeaderCell>No</Table.HeaderCell>
               <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Class</Table.HeaderCell>
+              <Table.HeaderCell>Course</Table.HeaderCell>
               <Table.HeaderCell>Payment</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
