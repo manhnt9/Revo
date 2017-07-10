@@ -26,7 +26,7 @@ class Forms extends React.Component {
 
   componentWillMount() {
     const options = {
-      url: `${API_URL}/form`,
+      url: `${API_URL}/form?token=${sessionStorage.token}`,
       method: 'GET',
       json: true
     };

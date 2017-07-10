@@ -12,14 +12,10 @@ class Logout extends React.Component {
   }
 
   componentWillMount() {
-    const formData = {
-      token: sessionStorage.token
-    };
     const options = {
-      url: `${API_URL}/session`,
+      url: `${API_URL}/session?token=${sessionStorage.token}`,
       method: 'DELETE',
-      json: true,
-      body: formData
+      json: true
     };
     request(options, (err, res, body) => {
       if (err) {
