@@ -8,25 +8,26 @@ const appStyle = {
   top: 150
 };
 
-localStorage.loggedIn = true;
-
 const App = ({ children }) => (
   <div className="ui one column stackable center aligned page grid" style={appStyle}>
     <div className="column twelve wide">
       <header>
         <Link to="/"><h1>Revo {version}</h1></Link>
         <br />
-        <Link to="/login"><Button color="purple">Admin Login</Button></Link>
+        {!sessionStorage.loggedIn &&
+          <Link to="/login"><Button color="purple">Admin Login</Button></Link>}
         &nbsp;
         <Link to="/register"><Button color="purple">Register</Button></Link>
-        {localStorage.loggedIn &&
+        {sessionStorage.loggedIn &&
           <Link to="/forms"><Button color="purple">Forms</Button></Link>}
-        {localStorage.loggedIn &&
+        {sessionStorage.loggedIn &&
           <Link to="/fee"><Button color="purple">Fee</Button></Link>}
-        {localStorage.loggedIn &&
+        {sessionStorage.loggedIn &&
           <Link to="/attendance"><Button color="purple">Attendance</Button></Link>}
-        {localStorage.loggedIn &&
+        {sessionStorage.loggedIn &&
           <Link to="/assignments"><Button color="purple">Assignments</Button></Link>}
+        {sessionStorage.loggedIn &&
+          <Link to="/logout"><Button color="purple">Logout</Button></Link>}
       </header>
       <section>
         <br />

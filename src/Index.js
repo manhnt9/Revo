@@ -8,6 +8,7 @@ import Forms from './components/Forms';
 import Fee from './components/Fee';
 import Attendance from './components/Attendance';
 import Assignments from './components/Assignments';
+import Logout from './components/Logout';
 
 window.React = React;
 
@@ -20,6 +21,7 @@ render(
       <Route path="/fee" component={Fee} />
       <Route path="/attendance" component={Attendance} />
       <Route path="/assignments" component={Assignments} />
+      <Route path="/logout" component={Logout} />
     </Route>
   </Router>), document.getElementById('content')
 );
