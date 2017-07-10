@@ -14,7 +14,7 @@ class Form extends React.Component {
 
   componentWillMount() {
     const options = {
-      url: `${API_URL}/student/${this.props.id}?token=${sessionStorage.token}`,
+      url: `${API_URL}/form/${this.props.id}?token=${sessionStorage.token}`,
       method: 'GET',
       json: true
     };
@@ -22,19 +22,8 @@ class Form extends React.Component {
     request(options, (err, res, body) => {
       if (err) {
         console.log(err);
-      } else if (body) {
-        const state = body;
-        this.setState(state);
       } else {
-        options.url = `${API_URL}/form/${this.props.id}?token=${sessionStorage.token}`;
-        request(options, (e, r, b) => {
-          if (e) {
-            console.log(e);
-          } else {
-            const state = b;
-            this.setState(state);
-          }
-        });
+        this.setState(body);
       }
     });
   }
