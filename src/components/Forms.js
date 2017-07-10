@@ -14,13 +14,7 @@ class Forms extends React.Component {
 
     this.state = {
       currentForm: -1,
-      forms: [
-        {
-          id: 1,
-          name: 'Nguyen Van A',
-          course: 'E1'
-        }
-      ]
+      forms: []
     };
     this.handleBackClick = this.handleBackClick.bind(this);
   }
