@@ -17,7 +17,7 @@ class Logout extends React.Component {
     };
     const options = {
       url: `${API_URL}/session`,
-      method: 'GET',
+      method: 'DELETE',
       json: true,
       body: formData
     };

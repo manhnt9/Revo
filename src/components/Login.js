@@ -37,7 +37,6 @@ class Login extends React.Component {
     request(options, (err, res, body) => {
       if (err) {
         console.log(err);
-        return;
       } else if (body.token.length) {
         sessionStorage.loggedIn = true;
         sessionStorage.token = body.token;
