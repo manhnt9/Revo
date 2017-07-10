@@ -108,8 +108,9 @@ class Forms extends React.Component {
       <div>
         <Button onClick={() => { this.handleBackClick(); }}>Back</Button>
         <br />
+        <br />
 
-        <Form formId={this.state.currentForm} />
+        <Form id={this.state.currentForm} />
       </div>
     );
   }
