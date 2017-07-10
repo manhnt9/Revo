@@ -37,7 +37,7 @@ class Register extends React.Component {
       if (err) {
         console.log(err);
       } else {
-        console.log(body);
+
       }
     });
   }

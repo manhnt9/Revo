@@ -36,8 +36,8 @@ class Attendance extends React.Component {
     const options = [];
     options.push({ key: 'invalid', text: 'Select course', value: 'invalid' });
     for (let i = 0; i < this.state.courses.length; i++) {
-      const courseName = this.state.courses[i];
-      options.push({ key: courseName, text: courseName, value: courseName });
+      const course = this.state.courses[i];
+      options.push({ key: course, text: course, value: course });
     }
     this.setState({ courseOptions: options });
   }
