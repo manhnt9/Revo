@@ -40,8 +40,8 @@ class Login extends React.Component {
       } else if (body.token.length) {
         sessionStorage.loggedIn = true;
         sessionStorage.token = body.token;
-        location.reload();
         browserHistory.push('/');
+        location.reload();
       }
     });
   }

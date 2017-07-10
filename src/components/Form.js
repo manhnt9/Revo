@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 import request from 'request';
 import { API_URL } from '../Api.js';
 
@@ -8,12 +8,13 @@ class Form extends React.Component {
     super(props);
 
     this.state = {
+      approved: true
     };
   }
 
   componentWillMount() {
     const options = {
-      url: `${API_URL}/form/${this.props.id}?token=${sessionStorage.token}`,
+      url: `${API_URL}/student/${this.props.id}?token=${sessionStorage.token}`,
       method: 'GET',
       json: true
     };
@@ -21,8 +22,35 @@ class Form extends React.Component {
     request(options, (err, res, body) => {
       if (err) {
         console.log(err);
+      } else if (body) {
+        const state = body;
+        this.setState(state);
       } else {
-        this.setState(body);
+        options.url = `${API_URL}/form/${this.props.id}?token=${sessionStorage.token}`;
+        request(options, (e, r, b) => {
+          if (e) {
+            console.log(e);
+          } else {
+            const state = b;
+            this.setState(state);
+          }
+        });
+      }
+    });
+  }
+
+  handleClick() {
+    const options = {
+      url: `${API_URL}/student/?id=${this.props.id}&token=${sessionStorage.token}`,
+      method: 'POST',
+      json: true
+    };
+
+    request(options, (err, res, body) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setState({ approved: true });
       }
     });
   }
@@ -31,6 +59,9 @@ class Form extends React.Component {
     return (
       <div className="ui one column stackable center aligned page grid">
         <div className="column twelve wide">
+          <Button onClick={() => { this.props.onClose(this.state.approved); }}>Back</Button>
+          <br />
+          <br />
           <Card>
             <Card.Content>
               <Card.Header>
@@ -51,10 +82,13 @@ class Form extends React.Component {
             </Card.Content>
             <Card.Content extra>
               <a>
-                {this.state.course}
+                Course: {this.state.course}
               </a>
             </Card.Content>
           </Card>
+
+          {!this.state.approved &&
+            <Button color="green" onClick={() => { this.handleClick(); }}>Approve</Button>}
         </div>
       </div>
     );
@@ -62,7 +96,8 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  id: React.PropTypes.number
+  id: React.PropTypes.number,
+  onClose: React.PropTypes.func
 };
 
 export default Form;

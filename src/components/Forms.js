@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table } from 'semantic-ui-react';
+import { Button, Table, Icon } from 'semantic-ui-react';
 import Form from './Form';
 import request from 'request';
 import { API_URL } from '../Api.js';
@@ -22,6 +22,7 @@ class Forms extends React.Component {
         }
       ]
     };
+    this.handleBackClick = this.handleBackClick.bind(this);
   }
 
   componentWillMount() {
@@ -44,7 +45,17 @@ class Forms extends React.Component {
     this.setState({ currentForm: formId });
   }
 
-  handleBackClick() {
+  handleBackClick(approved) {
+    if (approved) {
+      const forms = this.state.forms;
+      for (let i = 0; i < forms.length; i++) {
+        if (forms[i].id === this.state.currentForm) {
+          forms[i].approved = true;
+          break;
+        }
+      }
+    }
+
     this.setState({ currentForm: -1 });
   }
 
@@ -61,7 +72,11 @@ class Forms extends React.Component {
             >
               <a>{this.state.forms[i].name}</a>
             </Table.Cell>
-            <Table.Cell>{this.state.forms[i].course}</Table.Cell>
+            <Table.Cell>
+              {this.state.forms[i].course}
+              {this.state.forms[i].approved &&
+                <span>&nbsp; <Icon color="green" name="checkmark" /></span>}
+            </Table.Cell>
           </Table.Row>
         );
       }
@@ -106,11 +121,7 @@ class Forms extends React.Component {
 
     return (
       <div>
-        <Button onClick={() => { this.handleBackClick(); }}>Back</Button>
-        <br />
-        <br />
-
-        <Form id={this.state.currentForm} />
+        <Form id={this.state.currentForm} onClose={this.handleBackClick} />
       </div>
     );
   }
