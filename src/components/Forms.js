@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Table } from 'semantic-ui-react';
 import Form from './Form';
+import request from 'request';
+import { API_URL } from '../Api.js';
 
 const nameStyle = {
   cursor: 'pointer'
@@ -16,10 +18,26 @@ class Forms extends React.Component {
         {
           id: 1,
           name: 'Nguyen Van A',
-          class: 'E1'
+          course: 'E1'
         }
       ]
     };
+  }
+
+  componentWillMount() {
+    const options = {
+      url: `${API_URL}/form`,
+      method: 'GET',
+      json: true
+    };
+
+    request(options, (err, res, body) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setState({ forms: body });
+      }
+    });
   }
 
   handleFormClick(formId) {
@@ -43,7 +61,7 @@ class Forms extends React.Component {
             >
               <a>{this.state.forms[i].name}</a>
             </Table.Cell>
-            <Table.Cell>{this.state.forms[i].class}</Table.Cell>
+            <Table.Cell>{this.state.forms[i].course}</Table.Cell>
           </Table.Row>
         );
       }
@@ -55,7 +73,7 @@ class Forms extends React.Component {
               <Table.Row>
                 <Table.HeaderCell>No</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Class</Table.HeaderCell>
+                <Table.HeaderCell>Course</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
 
