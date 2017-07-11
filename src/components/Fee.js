@@ -38,6 +38,17 @@ class Fee extends React.Component {
     for (let i = 0; i < newStudents.length; i++) {
       if (newStudents[i].id === id) {
         newStudents[i].has_paid = !newStudents[i].has_paid;
+        const options = {
+          url: `${API_URL}/fee?student=${id}&token=${sessionStorage.token}`,
+          method: 'PATCH',
+          json: true
+        };
+
+        request(options, (err, res, body) => {
+          if (err) {
+            console.log(err);
+          }
+        });
       }
     }
     this.setState({ students: newStudents });
