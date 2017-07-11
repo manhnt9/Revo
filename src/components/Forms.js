@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table, Icon } from 'semantic-ui-react';
+import { Table, Icon } from 'semantic-ui-react';
 import Form from './Form';
 import request from 'request';
 import { API_URL } from '../Api.js';
