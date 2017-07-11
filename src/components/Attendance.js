@@ -2,6 +2,8 @@ import React from 'react';
 import { Dropdown, Checkbox, Table } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import request from 'request';
+import { API_URL } from '../Api.js';
 
 class Attendance extends React.Component {
   constructor(props) {
@@ -10,40 +12,58 @@ class Attendance extends React.Component {
     this.state = {
       date: moment(),
       course: 'invalid',
-      courses: [
-        'E1', 'E2'
-      ],
-      courseOptions: [
-      ],
-      students: [
-        {
-          id: 1,
-          name: 'Nguyen Van A',
-          course: 'E1',
-          presence: true
-        },
-        {
-          id: 2,
-          name: 'Nguyen Van B',
-          course: 'E1',
-          presence: false
-        }
-      ]
+      courses: [],
+      courseOptions: [],
+      students: []
     };
   }
 
   componentWillMount() {
-    const options = [];
-    options.push({ key: 'invalid', text: 'Select course', value: 'invalid' });
-    for (let i = 0; i < this.state.courses.length; i++) {
-      const course = this.state.courses[i];
-      options.push({ key: course, text: course, value: course });
-    }
-    this.setState({ courseOptions: options });
+    const option = {
+      url: `${API_URL}/course?token=${sessionStorage.token}`,
+      method: 'GET',
+      json: true
+    };
+
+    request(option, (err, res, body) => {
+      if (err) {
+        console.log(err);
+      } else {
+        const Courses = [];
+        for (let i = 0; i < body.length; ++i) {
+          Courses.push(body[i].course);
+        }
+
+        this.setState({ courses: Courses }, () => {
+          const options = [];
+          options.push({ key: 'invalid', text: 'Select course', value: 'invalid' });
+
+          for (let i = 0; i < this.state.courses.length; i++) {
+            const course = this.state.courses[i];
+            options.push({ key: course, text: course, value: course });
+          }
+          this.setState({ courseOptions: options });
+        });
+      }
+    });
   }
 
   fetchData() {
-    console.log(this.state.date.format('MM/DD/YYYY'));
+    const date = this.state.date;
+
+    const options = {
+      url: `${API_URL}/presence?course=${this.state.course}&date=${date.format('MM/DD/YYYY')}&token=${sessionStorage.token}`,
+      method: 'GET',
+      json: true
+    };
+
+    request(options, (err, res, body) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setState({ students: body });
+      }
+    });
   }
 
   handleDateChange(d) {
