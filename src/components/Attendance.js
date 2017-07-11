@@ -75,6 +75,32 @@ class Attendance extends React.Component {
     for (let i = 0; i < newStudents.length; i++) {
       if (newStudents[i].id === id) {
         newStudents[i].presence = !newStudents[i].presence;
+        const date = this.state.date;
+
+        const formData = {
+          student: `${newStudents[i].id}`,
+          course: this.state.course,
+          date: date.format('MM/DD/YYYY')
+        };
+
+        const options = {
+          url: `${API_URL}/presence?token=${sessionStorage.token}`,
+          method: 'POST',
+          json: true,
+          body: formData
+        };
+
+        if (newStudents[i].presence) {
+          options.method = 'POST';
+        } else {
+        }
+
+        request(options, (err, res, body) => {
+          if (err) {
+            console.log(err);
+          } else {
+          }
+        });
       }
     }
     this.setState({ students: newStudents });
