@@ -70,15 +70,15 @@ class Attendance extends React.Component {
     this.setState({ date: d }, () => { this.fetchData(); });
   }
 
-  handlePresenceChange(id) {
+  handlePresenceChange(student) {
     const newStudents = this.state.students;
     for (let i = 0; i < newStudents.length; i++) {
-      if (newStudents[i].id === id) {
+      if (newStudents[i].student === student) {
         newStudents[i].presence = !newStudents[i].presence;
         const date = this.state.date;
 
         const formData = {
-          student: `${newStudents[i].id}`,
+          student: `${newStudents[i].student}`,
           course: this.state.course,
           date: date.format('MM/DD/YYYY')
         };
@@ -93,6 +93,7 @@ class Attendance extends React.Component {
         if (newStudents[i].presence) {
           options.method = 'POST';
         } else {
+          options.method = 'DELETE';
         }
 
         request(options, (err, res, body) => {
@@ -120,7 +121,7 @@ class Attendance extends React.Component {
             <Table.Cell>{this.state.students[i].name}</Table.Cell>
             <Table.Cell>
               <Checkbox
-                onClick={() => { this.handlePresenceChange(this.state.students[i].id); }}
+                onClick={() => { this.handlePresenceChange(this.state.students[i].student); }}
                 checked={this.state.students[i].presence}
               />
             </Table.Cell>
