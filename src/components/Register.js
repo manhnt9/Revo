@@ -5,10 +5,6 @@ import moment from 'moment';
 import request from 'request';
 import { API_URL } from '../Api.js';
 
-const inputStyle = {
-  width: 250
-};
-
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -44,65 +40,70 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="form-input form-register column eight wide left aligned">
+        <h2 className="title">Register</h2>
         <Form onSubmit={() => { this.handleSubmit(); }}>
-          <Form.Field>
-            <label>Name</label>
-            <Form.Input
-              style={inputStyle} name="name" required
-              onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Parent name</label>
-            <Form.Input
-              style={inputStyle} name="parent_name" required
-              onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Date of birth</label>
-            <DatePicker
-              selected={this.state.dob}
-              onChange={(d) => { this.setState({ dob: d }); }}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Phone number</label>
-            <Form.Input
-              style={inputStyle} name="phone" required
-              onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
-            />
-          </Form.Field>
+          <div className="fields">
+            <Form.Field>
+              <label>Name</label>
+              <Form.Input
+                name="name" required
+                onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Parent name</label>
+              <Form.Input
+                name="parent_name" required
+                onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
+              />
+            </Form.Field>
+          </div>
+          <div className="fields">
+            <Form.Field>
+              <label>Phone number</label>
+              <Form.Input
+                name="phone" required
+                onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Date of birth</label>
+              <DatePicker
+                selected={this.state.dob}
+                onChange={(d) => { this.setState({ dob: d }); }}
+              />
+            </Form.Field>
+          </div>
           <Form.Field>
             <label>Email</label>
             <Form.Input
-              style={inputStyle} name="email" required
+              name="email" required
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
             />
           </Form.Field>
           <Form.Field>
             <label>Facebook link or Skype ID</label>
             <Form.Input
-              style={inputStyle} name="social" required
+              name="social" required
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
             />
           </Form.Field>
           <Form.Field>
             <label>Course</label>
             <Form.Input
-              style={inputStyle} name="course" required
+              name="course" required
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
             />
           </Form.Field>
           <Form.Field>
             <label>Note</label>
             <Form.Input
-              style={inputStyle} name="note"
+              name="note"
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
             />
           </Form.Field>
-          <Button type="submit">Submit</Button>
+          <Button className="fluid ui button primary" type="submit">Submit</Button>
         </Form>
       </div>
     );
