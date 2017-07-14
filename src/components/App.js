@@ -5,36 +5,39 @@ import { Button } from 'semantic-ui-react';
 
 const appStyle = {
   position: 'relative',
-  top: 150
+  top: 20
 };
 
 const App = ({ children }) => (
-  <div className="ui one column stackable center aligned page grid" style={appStyle}>
-    <div className="column twelve wide">
+  <div className="ui one column stackable center aligned page grid app-layout" style={appStyle}>
+    <div className="column sixteen wide ">
       <header>
-        <Link to="/"><h1>Revo {version}</h1></Link>
-        <br />
-        {!sessionStorage.loggedIn &&
-          <Link to="/login"><Button color="purple">Admin Login</Button></Link>}
-        &nbsp;
-        <Link to="/register"><Button color="purple">Register</Button></Link>
-        {sessionStorage.loggedIn &&
-          <Link to="/forms"><Button color="purple">Forms</Button></Link>}
-        {sessionStorage.loggedIn &&
-          <Link to="/fee"><Button color="purple">Fee</Button></Link>}
-        {sessionStorage.loggedIn &&
-          <Link to="/attendance"><Button color="purple">Attendance</Button></Link>}
-        {sessionStorage.loggedIn &&
-          <Link to="/assignments"><Button color="purple">Assignments</Button></Link>}
-        {sessionStorage.loggedIn &&
-          <Link to="/logout"><Button color="purple">Logout</Button></Link>}
+        <div className="app-name"><Link to="/">Revo {version}</Link></div>
+        <div className="nav-bar">
+          {!sessionStorage.loggedIn &&
+            <Link to="/login"><Button color="purple">Admin Login</Button></Link>}
+          &nbsp;
+          <Link to="/register"><Button color="purple">Register</Button></Link>
+          {sessionStorage.loggedIn &&
+            <Link to="/forms"><Button color="purple">Forms</Button></Link>}
+          {sessionStorage.loggedIn &&
+            <Link to="/fee"><Button color="purple">Fee</Button></Link>}
+          {sessionStorage.loggedIn &&
+            <Link to="/attendance"><Button color="purple">Attendance</Button></Link>}
+          {sessionStorage.loggedIn &&
+            <Link to="/assignments"><Button color="purple">Assignments</Button></Link>}
+          {sessionStorage.loggedIn &&
+            <Link to="/logout"><Button color="purple">Logout</Button></Link>}
+        </div>
       </header>
-      <section>
+      <section className="container ui grid centered">
         <br />
         {children}
       </section>
       <br />
-      <p>&copy; 2017 RevoTeam </p>
+      <div className="footer">
+        <p>&copy; 2017 RevoTeam </p>
+      </div>
     </div>
   </div>
 );

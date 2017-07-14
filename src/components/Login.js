@@ -4,10 +4,6 @@ import request from 'request';
 import { API_URL } from '../Api.js';
 import { browserHistory } from 'react-router';
 
-const inputStyle = {
-  width: 200
-};
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -48,24 +44,25 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="form-input form-login column eight wide">
+        <h2 className="title">Admin Login</h2>
         <Form onSubmit={() => { this.handleSubmit(); }}>
           <Form.Field>
             <Form.Input
-              style={inputStyle} name="username" placeholder="Username"
+              name="username" placeholder="Username"
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
             />
           </Form.Field>
           <Form.Field>
             <Form.Input
-              style={inputStyle} name="password" placeholder="Password" type="password"
+              name="password" placeholder="Password" type="password"
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
             />
           </Form.Field>
           <Form.Field>
             <Checkbox label="Remember me" />
           </Form.Field>
-          <Button type="submit">Submit</Button>
+          <Button className="fluid ui button primary" type="submit">Submit</Button>
         </Form>
       </div>
     );
