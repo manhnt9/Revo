@@ -30,8 +30,8 @@ const App = ({ children }) => (
             <Link to="/logout"><Button color="purple">Logout</Button></Link>}
         </div>
       </header>
+      <br /><br /><br /><br />
       <section className="container ui grid centered">
-        <br />
         {children}
       </section>
       <br />
