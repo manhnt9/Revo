@@ -45,14 +45,14 @@ class Register extends React.Component {
         <Form onSubmit={() => { this.handleSubmit(); }}>
           <div className="fields">
             <Form.Field>
-              <label>Name</label>
+              <label>Name*</label>
               <Form.Input
                 name="name" required
                 onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
               />
             </Form.Field>
             <Form.Field>
-              <label>Parent name</label>
+              <label>Parent name*</label>
               <Form.Input
                 name="parent_name" required
                 onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
@@ -61,14 +61,14 @@ class Register extends React.Component {
           </div>
           <div className="fields">
             <Form.Field>
-              <label>Phone number</label>
+              <label>Phone number*</label>
               <Form.Input
                 name="phone" required
                 onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
               />
             </Form.Field>
             <Form.Field>
-              <label>Date of birth</label>
+              <label>Date of birth*</label>
               <DatePicker
                 selected={this.state.dob}
                 onChange={(d) => { this.setState({ dob: d }); }}
@@ -76,7 +76,7 @@ class Register extends React.Component {
             </Form.Field>
           </div>
           <Form.Field>
-            <label>Email</label>
+            <label>Email*</label>
             <Form.Input
               name="email" required
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
@@ -85,12 +85,12 @@ class Register extends React.Component {
           <Form.Field>
             <label>Facebook link or Skype ID</label>
             <Form.Input
-              name="social" required
+              name="social"
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
             />
           </Form.Field>
           <Form.Field>
-            <label>Course</label>
+            <label>Course*</label>
             <Form.Input
               name="course" required
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
@@ -103,6 +103,7 @@ class Register extends React.Component {
               onChange={(e, { name, value }) => { this.handleChange(e, { name, value }); }}
             />
           </Form.Field>
+          <p><i>Fields marked * are required</i></p>
           <Button className="fluid ui button primary" type="submit">Submit</Button>
         </Form>
       </div>
