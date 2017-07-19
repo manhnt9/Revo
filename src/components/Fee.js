@@ -33,13 +33,13 @@ class Fee extends React.Component {
     this.setState({ currentFilter: filter });
   }
 
-  handlePaymentChange(id) {
+  handlePaymentChange(student) {
     const newStudents = this.state.students;
     for (let i = 0; i < newStudents.length; i++) {
-      if (newStudents[i].id === id) {
+      if (newStudents[i].student === student) {
         newStudents[i].has_paid = !newStudents[i].has_paid;
         const options = {
-          url: `${API_URL}/fee?student=${id}&token=${sessionStorage.token}`,
+          url: `${API_URL}/fee?student=${student}&token=${sessionStorage.token}`,
           method: 'PATCH',
           json: true
         };
@@ -61,11 +61,11 @@ class Fee extends React.Component {
         students.push(
           <Table.Row>
             <Table.Cell>{i + 1}</Table.Cell>
-            <Table.Cell>{this.state.students[i].student}</Table.Cell>
+            <Table.Cell>{this.state.students[i].student_name}</Table.Cell>
             <Table.Cell>{this.state.students[i].course}</Table.Cell>
             <Table.Cell>
               <Checkbox
-                onClick={() => { this.handlePaymentChange(this.state.students[i].id); }}
+                onClick={() => { this.handlePaymentChange(this.state.students[i].student); }}
                 checked={this.state.students[i].has_paid}
               />
             </Table.Cell>
@@ -78,11 +78,11 @@ class Fee extends React.Component {
         students.push(
           <Table.Row>
             <Table.Cell>{i + 1}</Table.Cell>
-            <Table.Cell>{this.state.students[i].student}</Table.Cell>
+            <Table.Cell>{this.state.students[i].student_name}</Table.Cell>
             <Table.Cell>{this.state.students[i].course}</Table.Cell>
             <Table.Cell>
               <Checkbox
-                onClick={() => { this.handlePaymentChange(this.state.students[i].id); }}
+                onClick={() => { this.handlePaymentChange(this.state.students[i].student); }}
                 checked={this.state.students[i].has_paid}
               />
             </Table.Cell>
@@ -95,11 +95,11 @@ class Fee extends React.Component {
         students.push(
           <Table.Row>
             <Table.Cell>{i + 1}</Table.Cell>
-            <Table.Cell>{this.state.students[i].student}</Table.Cell>
+            <Table.Cell>{this.state.students[i].student_name}</Table.Cell>
             <Table.Cell>{this.state.students[i].course}</Table.Cell>
             <Table.Cell>
               <Checkbox
-                onClick={() => { this.handlePaymentChange(this.state.students[i].id); }}
+                onClick={() => { this.handlePaymentChange(this.state.students[i].student); }}
                 checked={this.state.students[i].has_paid}
               />
             </Table.Cell>
